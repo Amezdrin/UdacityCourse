@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.artemtrue.hihandsome.MainActivity"
+    >
+
+    <ImageView
+        android:id = "@+id/heyimage"
+        android:layout_width = "match_parent"
+        android:layout_height = "match_parent"
+        android:src = "@drawable/heyhandsome"
+        android:scaleType="centerCrop"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hey, Handsome!"
+        android:padding="16dp"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:id = "@+id/topText"
+        android:textColor="#B71C1C"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        />
+
+    <TextView
+        android:id = "@+id/textFrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="16dp"
+        android:paddingRight="16dp"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:text = "Do you want some coffee?"
+        android:textColor="#B71C1C"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="bold" />
+</RelativeLayout>
