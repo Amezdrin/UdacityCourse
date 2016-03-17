@@ -12,14 +12,12 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends ActionBarActivity {
 
-    int quantity = 2;
+    int quantity = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
     }
 
     /**
@@ -28,17 +26,26 @@ public class MainActivity extends ActionBarActivity {
     public void submitOrder(View view) {
         /** по клику на кнопку Order вызывается этот метод, который вызывает
          * метод display в котором в текствью пихается текст и, в итоге, отображается 1 */
-        display(quantity);
-
+        //display(quantity);
         displayPrice(quantity * 5);
     }
 
     public void increaseValue(View view) {
-        display(quantity + 1);
+
+        //display(quantity + 1);
+        quantity = quantity + 1;
+        display(quantity);
     }
 
     public void decreaseValue(View view) {
-        display(quantity-1);
+
+        //display(quantity - 1);
+        quantity = quantity - 1;
+        if(quantity <= 0)
+        {
+            quantity = 0;
+        }
+        display(quantity);
     }
 
     /**
