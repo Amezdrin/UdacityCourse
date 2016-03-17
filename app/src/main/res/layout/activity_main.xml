@@ -17,43 +17,47 @@
         android:id = "@+id/ordertext"
         />
 
-    <Button
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="+"
-        android:textAllCaps="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:id = "@+id/increase_btn"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:textStyle="bold"
-        android:onClick="increaseValue"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="0"
-        android:paddingTop="16dp"
-        android:paddingLeft="16dp"
-        android:id = "@+id/quantity_text_view"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        />
+        android:orientation="horizontal">
 
-    <Button
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="-"
-        android:textAllCaps="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:id = "@+id/decrease_btn"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:textStyle="bold"
-        android:onClick="decreaseValue"
-        />
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="-"
+            android:textAllCaps="true"
+            android:layout_marginLeft="16dp"
+            android:id = "@+id/decrease_btn"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textStyle="bold"
+            android:onClick="decreaseValue"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:layout_marginLeft="8dp"
+            android:id = "@+id/quantity_text_view"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            />
+
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="+"
+            android:textAllCaps="true"
+            android:layout_marginLeft="8dp"
+            android:id = "@+id/increase_btn"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textStyle="bold"
+            android:onClick="increaseValue"
+            />
+
+        </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -90,7 +94,5 @@
         android:textStyle="bold"
         android:onClick="submitOrder"
         />
-
-
 
 </LinearLayout>

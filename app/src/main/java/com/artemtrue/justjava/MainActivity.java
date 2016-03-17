@@ -13,6 +13,7 @@ import java.text.NumberFormat;
 public class MainActivity extends ActionBarActivity {
 
     int quantity = 0;
+    String thanks = "Thank You!";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,11 @@ public class MainActivity extends ActionBarActivity {
         /** по клику на кнопку Order вызывается этот метод, который вызывает
          * метод display в котором в текствью пихается текст и, в итоге, отображается 1 */
         //display(quantity);
-        displayPrice(quantity * 5);
+
+        //displayPrice(quantity * 5);
+
+        String priceMessage = "Total: $" + (quantity*5) + "\n" + thanks;
+        displayMessage(priceMessage);
     }
 
     public void increaseValue(View view) {
@@ -60,5 +65,10 @@ public class MainActivity extends ActionBarActivity {
     private void displayPrice(int number) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+    }
+
+    private void displayMessage(String message) {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        priceTextView.setText(message);
     }
 }
