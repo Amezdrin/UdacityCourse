@@ -14,6 +14,9 @@ public class MainActivity extends ActionBarActivity {
 
     int quantity = 0;
     String thanks = "Thank You!";
+    String name = "Name: Artem Mezdrin";
+    String kolichestvo = "Quantity: ";
+    int price = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +27,18 @@ public class MainActivity extends ActionBarActivity {
     /**
      * This method is called when the order button is clicked.
      */
+
     public void submitOrder(View view) {
         /** по клику на кнопку Order вызывается этот метод, который вызывает
          * метод display в котором в текствью пихается текст и, в итоге, отображается 1 */
         //display(quantity);
-
         //displayPrice(quantity * 5);
+        //int price = calculatePrice();
+        //String priceMessage = "Total: $" + price + "\n" + thanks;
+        //displayMessage(priceMessage);
 
-        String priceMessage = "Total: $" + (quantity*5) + "\n" + thanks;
+        createOrderSummary();
+        String priceMessage = createOrderSummary();
         displayMessage(priceMessage);
     }
 
@@ -39,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
 
         //display(quantity + 1);
         quantity = quantity + 1;
-        display(quantity);
+        displayQuantity(quantity);
     }
 
     public void decreaseValue(View view) {
@@ -50,13 +57,13 @@ public class MainActivity extends ActionBarActivity {
         {
             quantity = 0;
         }
-        display(quantity);
+        displayQuantity(quantity);
     }
 
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void display(int number) {
+    private void displayQuantity(int number) {
         TextView quantityTextView = (TextView) findViewById(
                 R.id.quantity_text_view);
         quantityTextView.setText("" + number);
@@ -70,5 +77,17 @@ public class MainActivity extends ActionBarActivity {
     private void displayMessage(String message) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(message);
+    }
+
+    private int calculatePrice() {
+        price = quantity * 5;
+        return price;
+    }
+
+    public String createOrderSummary() {
+
+        price = calculatePrice();
+        String priceMessage = name + "\n" + kolichestvo + quantity + "\nTotal: $" + price + "\n" + thanks;
+        return priceMessage;
     }
 }
