@@ -33,12 +33,11 @@ public class MainActivity extends ActionBarActivity {
          * метод display в котором в текствью пихается текст и, в итоге, отображается 1 */
         //display(quantity);
         //displayPrice(quantity * 5);
-        //int price = calculatePrice();
+        int price = calculatePrice();
         //String priceMessage = "Total: $" + price + "\n" + thanks;
         //displayMessage(priceMessage);
 
-        createOrderSummary();
-        String priceMessage = createOrderSummary();
+        String priceMessage = createOrderSummary(price);
         displayMessage(priceMessage);
     }
 
@@ -84,9 +83,8 @@ public class MainActivity extends ActionBarActivity {
         return price;
     }
 
-    public String createOrderSummary() {
+    public String createOrderSummary(int price) {
 
-        price = calculatePrice();
         String priceMessage = name + "\n" + kolichestvo + quantity + "\nTotal: $" + price + "\n" + thanks;
         return priceMessage;
     }
