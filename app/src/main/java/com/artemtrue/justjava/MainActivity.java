@@ -3,6 +3,7 @@ package com.artemtrue.justjava;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -16,7 +17,10 @@ public class MainActivity extends ActionBarActivity {
     String thanks = "Thank You!";
     String name = "Name: Artem Mezdrin";
     String kolichestvo = "Quantity: ";
+    String addWhippedCream = "Add whipped cream? ";
+    String addChocolate = "Add Chocolate? ";
     int price = 0;
+    String hasWhippedCream;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,14 +72,14 @@ public class MainActivity extends ActionBarActivity {
         quantityTextView.setText("" + number);
     }
 
-    private void displayPrice(int number) {
+    /* private void displayPrice(int number) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-    }
+    } */
 
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(message);
+        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(message);
     }
 
     private int calculatePrice() {
@@ -83,9 +87,54 @@ public class MainActivity extends ActionBarActivity {
         return price;
     }
 
+
     public String createOrderSummary(int price) {
 
-        String priceMessage = name + "\n" + kolichestvo + quantity + "\nTotal: $" + price + "\n" + thanks;
+        CheckBox whippedCream = (CheckBox) findViewById(R.id.whip_checkbox);
+        CheckBox chocolate = (CheckBox) findViewById(R.id.choco_checkbox);
+
+        boolean whippedCreamChecked = whippedCream.isChecked();
+        boolean chocolateChecked = chocolate.isChecked();
+
+        //делает вывод whipped cream true, если стоит чек
+        if(whippedCream.isChecked())
+        {
+            String priceMessage = name + "\n"
+                    + addWhippedCream + whippedCreamChecked + "\n"
+                    + addChocolate + chocolateChecked + "\n"
+                    + kolichestvo + quantity +
+                    "\nTotal: $" + price +
+                    "\n" + thanks;
+            return priceMessage;
+        }
+
+        //делает вывод chocolate true, если стоит чек
+        if(chocolate.isChecked())
+        {
+            String priceMessage = name + "\n"
+                    + addWhippedCream + whippedCreamChecked + "\n"
+                    + addChocolate + chocolateChecked + "\n"
+                    + kolichestvo + quantity +
+                    "\nTotal: $" + price +
+                    "\n" + thanks;
+            return priceMessage;
+        }
+
+        //выводит для whipped cream и chocolate false, если не стоят чеки
+        String priceMessage = name + "\n"
+                + addWhippedCream + whippedCreamChecked + "\n"
+                + addChocolate + chocolateChecked + "\n"
+                + kolichestvo + quantity +
+                "\nTotal: $" + price +
+                "\n" + thanks;
+
         return priceMessage;
+
+
+        /**По курсу Udacity:
+         *
+         * boolean hasWhippedCream = whippedCream.isChecked();
+         *String priceMessage = name + "\n" + addWhippedCream + whippedCream + "\n" + kolichestvo + quantity + "\nTotal: $" + price + "\n" + thanks;
+         * */
     }
 }
