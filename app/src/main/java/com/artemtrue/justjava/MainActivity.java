@@ -1,5 +1,7 @@
 package com.artemtrue.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -23,6 +25,7 @@ public class MainActivity extends ActionBarActivity {
     int whippedCreamPrice = 1; // стоимость за 1 шт
     int chocolatePrice = 2; // стоимость за 1 шт
     int price = 0;
+    String email = "artemm@handsome.is";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +103,20 @@ public class MainActivity extends ActionBarActivity {
         return priceMessage;
     }
 
-    public void submitOrder(View view) {
+    /** метод, предлагающий отправить заказ на почту */
+    //public void composeEmail(String priceMessage, String email) {
+    //    Intent intent = new Intent(Intent.ACTION_SEND);
+    //    intent.setType("*/*");
+    //    intent.putExtra(Intent.EXTRA_EMAIL, email);
+    //    intent.putExtra(Intent.EXTRA_SUBJECT, "Your coffee order");
+    //    intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
+    //    if (intent.resolveActivity(getPackageManager()) != null) {
+    //        startActivity(intent);
+    //    }
+    //}
+
+
+   public void submitOrder(View view) {
         /** по клику на кнопку Order вызывается этот метод, который вызывает
          * метод display в котором в текствью пихается текст и, в итоге, отображается 1 */
         CheckBox whippedCream = (CheckBox) findViewById(R.id.whip_checkbox);
@@ -117,13 +133,25 @@ public class MainActivity extends ActionBarActivity {
         enteredName = "Name: " + nameInputField.getText().toString();
 
         String priceMessage = createOrderSummary(price, whippedCreamChecked, chocolateChecked, enteredName);
-        displayMessage(priceMessage);
+
+        /** отправка заказа на почту */
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:"));
+            intent.putExtra(Intent.EXTRA_EMAIL, email);
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Your coffee order");
+            intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
+            if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+
+        //composeEmail(priceMessage, email);
+        //displayMessage(priceMessage);
     }
 
     /** вывод всего заказа на экран */
-    private void displayMessage(String message) {
+    /*private void displayMessage(String message) {
         TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
         orderSummaryTextView.setText(message);
-    }
+    }*/
 
 }
