@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -15,7 +16,7 @@ public class MainActivity extends ActionBarActivity {
 
     int quantity = 0;
     String thanks = "Thank You!";
-    String name = "Name: Artem Mezdrin";
+    String enteredName = "";
     String kolichestvo = "Quantity: ";
     String addWhippedCream = "Add whipped cream? ";
     String addChocolate = "Add Chocolate? ";
@@ -35,11 +36,11 @@ public class MainActivity extends ActionBarActivity {
     public void submitOrder(View view) {
         /** по клику на кнопку Order вызывается этот метод, который вызывает
          * метод display в котором в текствью пихается текст и, в итоге, отображается 1 */
-        //display(quantity);
-        //displayPrice(quantity * 5);
         int price = calculatePrice();
-        //String priceMessage = "Total: $" + price + "\n" + thanks;
-        //displayMessage(priceMessage);
+
+        //Берем введенное имя и выводим его в строке заказа
+        EditText nameInputField = (EditText) findViewById(R.id.name_input_field);
+        enteredName = "Name: " + nameInputField.getText().toString();
 
         String priceMessage = createOrderSummary(price);
         displayMessage(priceMessage);
@@ -99,7 +100,7 @@ public class MainActivity extends ActionBarActivity {
         //делает вывод whipped cream true, если стоит чек
         if(whippedCream.isChecked())
         {
-            String priceMessage = name + "\n"
+            String priceMessage = enteredName + "\n"
                     + addWhippedCream + whippedCreamChecked + "\n"
                     + addChocolate + chocolateChecked + "\n"
                     + kolichestvo + quantity +
@@ -111,7 +112,7 @@ public class MainActivity extends ActionBarActivity {
         //делает вывод chocolate true, если стоит чек
         if(chocolate.isChecked())
         {
-            String priceMessage = name + "\n"
+            String priceMessage = enteredName + "\n"
                     + addWhippedCream + whippedCreamChecked + "\n"
                     + addChocolate + chocolateChecked + "\n"
                     + kolichestvo + quantity +
@@ -121,7 +122,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         //выводит для whipped cream и chocolate false, если не стоят чеки
-        String priceMessage = name + "\n"
+        String priceMessage = enteredName + "\n"
                 + addWhippedCream + whippedCreamChecked + "\n"
                 + addChocolate + chocolateChecked + "\n"
                 + kolichestvo + quantity +
