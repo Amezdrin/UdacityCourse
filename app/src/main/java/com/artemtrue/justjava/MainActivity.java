@@ -26,6 +26,8 @@ public class MainActivity extends ActionBarActivity {
     int chocolatePrice = 2; // стоимость за 1 шт
     int price = 0;
     String email = "artemm@handsome.is";
+    String emailSubject = "Your coffee order";
+    String total = "Total: ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,11 +96,11 @@ public class MainActivity extends ActionBarActivity {
 
         //выводит для whipped cream и chocolate false, если не стоят чеки
         String priceMessage = enteredName + "\n"
-                + addWhippedCream + whippedCreamChecked + "\n"
-                + addChocolate + chocolateChecked + "\n"
-                + kolichestvo + quantity +
-                "\nTotal: $" + price +
-                "\n" + thanks;
+                + R.string.addWhippedCream + whippedCreamChecked + "\n"
+                + R.string.addChocolate + chocolateChecked + "\n"
+                + R.string.kolichestvo + quantity +
+                "\n" + R.string.total + price +
+                "\n" + R.string.thanks;
 
         return priceMessage;
     }
@@ -138,7 +140,7 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
             intent.setData(Uri.parse("mailto:"));
             intent.putExtra(Intent.EXTRA_EMAIL, email);
-            intent.putExtra(Intent.EXTRA_SUBJECT, "Your coffee order");
+            intent.putExtra(Intent.EXTRA_SUBJECT, emailSubject);
             intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
             if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);

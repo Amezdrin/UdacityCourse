@@ -14,7 +14,7 @@
         <EditText
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:hint="Name"
+            android:hint="@string/name_input_field"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="16dp"
@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Toppings"
+            android:text="@string/toppings"
             android:textAllCaps="true"
             android:paddingTop="16dp"
             android:paddingLeft="16dp"
@@ -38,7 +38,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Whipped Cream"
+                android:text="@string/whip_checkbox"
                 android:textSize="16sp"
                 android:paddingLeft="24dp"
                 android:id="@+id/whip_checkbox"
@@ -48,7 +48,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chocolate"
+                android:text="@string/choco_checkbox"
                 android:textSize="16sp"
                 android:paddingLeft="24dp"
                 android:id="@+id/choco_checkbox"
@@ -57,7 +57,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quantity"
+            android:text="@string/Quantity"
             android:textAllCaps="true"
             android:paddingTop="16dp"
             android:paddingLeft="16dp"
@@ -110,7 +110,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Order Summary"
+            android:text="@string/OrderSummary"
             android:textAllCaps="true"
             android:paddingTop="16dp"
             android:paddingLeft="16dp"
@@ -133,7 +133,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Order"
+            android:text="@string/SumbitOrder"
             android:textAllCaps="true"
             android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
