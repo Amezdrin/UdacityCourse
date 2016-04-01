@@ -20,6 +20,8 @@ public class MainActivity extends ActionBarActivity {
     String kolichestvo = "Quantity: ";
     String addWhippedCream = "Add whipped cream? ";
     String addChocolate = "Add Chocolate? ";
+    int whippedCreamPrice = 1; // стоимость за 1 шт
+    int chocolatePrice = 2; // стоимость за 1 шт
     int price = 0;
 
     @Override
@@ -54,8 +56,24 @@ public class MainActivity extends ActionBarActivity {
     }
 
     /** расчет стоимости заказа (кол-во * цену за чашку) */
-    private int calculatePrice() {
-        price = quantity * 5;
+    private int calculatePrice(boolean whippedCreamChecked, boolean chocolateChecked, int whippedCreamPrice, int chocolatePrice) {
+
+        if(whippedCreamChecked){
+            price = quantity * (5 + whippedCreamPrice);
+        }
+
+        if(chocolateChecked){
+            price = quantity * (5 + chocolatePrice);
+        }
+
+        if(chocolateChecked && whippedCreamChecked){
+            price = quantity * (5 + chocolatePrice + whippedCreamPrice);
+        }
+
+        if (chocolateChecked == false && whippedCreamChecked == false) {
+            price = quantity * 5;
+        }
+
         return price;
     }
 
@@ -76,14 +94,14 @@ public class MainActivity extends ActionBarActivity {
     public void submitOrder(View view) {
         /** по клику на кнопку Order вызывается этот метод, который вызывает
          * метод display в котором в текствью пихается текст и, в итоге, отображается 1 */
-        int price = calculatePrice();
-
         CheckBox whippedCream = (CheckBox) findViewById(R.id.whip_checkbox);
         CheckBox chocolate = (CheckBox) findViewById(R.id.choco_checkbox);
 
         //берем состояния чекбоксов и кладём их в переменные
         boolean whippedCreamChecked = whippedCream.isChecked();
         boolean chocolateChecked = chocolate.isChecked();
+
+        int price = calculatePrice(whippedCreamChecked, chocolateChecked, whippedCreamPrice, chocolatePrice);
 
         //Берем введенное имя и выводим его в строке заказа
         EditText nameInputField = (EditText) findViewById(R.id.name_input_field);
