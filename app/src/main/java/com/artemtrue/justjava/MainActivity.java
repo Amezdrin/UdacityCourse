@@ -33,18 +33,27 @@ public class MainActivity extends ActionBarActivity {
     /** метод для увеличения количества чашек */
     public void increaseValue(View view) {
 
-        quantity = quantity + 1;
+        if(quantity < 100) {
+            quantity = quantity + 1;
+
+        }
+        else {
+            quantity = 100;
+        }
+
         displayQuantity(quantity);
     }
 
     /** метод для уменьшения количества чашек */
     public void decreaseValue(View view) {
 
-        quantity = quantity - 1;
-        if(quantity <= 0)
-        {
+        if(quantity > 0) {
+            quantity = quantity - 1;
+        }
+        else {
             quantity = 0;
         }
+
         displayQuantity(quantity);
     }
 
