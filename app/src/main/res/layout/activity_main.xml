@@ -26,10 +26,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/toppings"
+            style="@style/MyFirstStyle"
             android:textAllCaps="true"
             android:paddingTop="16dp"
             android:paddingLeft="16dp"
-            android:textAppearance="?android:textAppearanceLarge"
             android:id = "@+id/toppings"
             android:layout_marginBottom="16dp"
             />
@@ -61,7 +61,7 @@
             android:textAllCaps="true"
             android:paddingTop="16dp"
             android:paddingLeft="16dp"
-            android:textAppearance="?android:textAppearanceLarge"
+            style="@style/MyFirstStyle"
             android:id = "@+id/ordertext"
             />
 
@@ -114,7 +114,7 @@
             android:textAllCaps="true"
             android:paddingTop="16dp"
             android:paddingLeft="16dp"
-            android:textAppearance="?android:textAppearanceLarge"
+            style="@style/MyFirstStyle"
             android:id = "@+id/pricetext"
             />
 
